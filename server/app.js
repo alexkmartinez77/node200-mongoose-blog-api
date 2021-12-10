@@ -6,11 +6,12 @@ const users = require('./routes/users')
 const app = express();
 
 app.use(bodyParser.json());
+//respond with all users at the /api/users route
 app.use('/api/users', users);
 //Instructs mongoose to connect to local mongoDB instance
-mongoose.connect('mongodb://localhost/myblog', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/myblog');
 //needed for async operations
-mongoose.promise = promise;
+mongoose.Promise = Promise;
 
 
 //routes

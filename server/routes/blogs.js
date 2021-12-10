@@ -15,20 +15,21 @@ router.route('/')
 router.route('/:id')
   .get((req, res) => {
     Blog.findById(req.params.id)
-    .then( blog => {res.status(200).json(blog); console.log(`User ${req.params.id} has been found.`)})
+        .then( user =>  user ? res.status(200).json(user) : res.status(404).json({message: `User ${req.params.id} not in database.`}))
     })
   .put((req, res) => {
     Blog.findByIdAndUpdate(req.params.id)
-    .then( blog => {res.status(200).json(blog); console.log(`User ${req.params.id} has been updated.`)})
+        .then( blog => {res.status(200).json(blog); console.log(`User ${req.params.id} has been updated.`)})
     })
   .delete((req, res) => {
     Blog.findByIdAndRemove(req.params.id)
-    .then( blog => {res.status(200).json(blog); console.log(`User ${req.params.id} has been deleted.`)})
+        .then( blog => {res.status(200).json(blog); console.log(`User ${req.params.id} has been deleted.`)})
     });
 
-router.get('/featured', (req, res) => {
-    Blog.where()
-        .then();
-})
+/*router.get('/featured', (req,res) => {
+  console.log('*****************************INSIDE FEATURED**********************************')
+  Blog.find({title: "Hello Word"})
+      .then(featuredBlogs => {res.status(200).json(featuredBlogs)});
+  });*/
 
 module.exports = router;

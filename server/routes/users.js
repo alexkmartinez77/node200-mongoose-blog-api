@@ -13,8 +13,8 @@ router.route('/')
 router.route('/:id')
   .get((req, res) => {
     User.findById(req.params.id)
-        .then( user => {res.status(200).json(user); console.log(`User ${req.params.id} has been found.`)})
-    })
+        .then( user =>  user ? res.status(200).json(user) : res.status(404).json({message: `User ${req.params.id} not in database.`}))
+  })
   .post((req, res) => {
 
     })
@@ -26,5 +26,5 @@ router.route('/:id')
     User.findByIdAndRemove(req.params.id)
         .then( user => {res.status(200).json(user); console.log(`User ${req.params.id} has been removed.`)})
     });
-
+  
 module.exports = router;

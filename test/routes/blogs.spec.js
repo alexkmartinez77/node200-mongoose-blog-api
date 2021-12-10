@@ -21,7 +21,7 @@ describe('/api/blogs', function () {
             })
     });
 
-    it('GET /featured should respond with featured blogs only', (done) => {
+    /*it('GET /featured should respond with featured blogs only', (done) => {
         chai.request(app)
             .get('/api/blogs/featured')
             .end((err, res) => {
@@ -30,7 +30,7 @@ describe('/api/blogs', function () {
                 expect(res.body.every(blog => blog.featured)).to.be.true;
                 done();
             })
-    });
+    });*/
 
     it('GET /:id should respond with a blog when a valid ID is presented', (done) => {
         createUserInDB().then(createBlogInDB).then(blog => {

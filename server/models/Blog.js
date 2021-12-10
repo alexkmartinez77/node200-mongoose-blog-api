@@ -5,7 +5,7 @@ const BlogSchema = new Schema({
   title: { type: String, require: true },
   article: { type: String, require: true },
   published: { type: Date, require: true },
-  feature: { type: Boolean, require: true },
+  featured: { type: Boolean, require: true },
   author: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 

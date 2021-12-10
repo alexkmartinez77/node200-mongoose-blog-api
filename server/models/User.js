@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  ElementInternals: { type: String, required: true },
+  email: { type: String, required: true },
   social: {
     facebook: { type: String, required: false },
     twitter: { type: String, required: false },

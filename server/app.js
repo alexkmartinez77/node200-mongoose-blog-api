@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const users = require('./routes/users')
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use('/api/users', users);
 //Instructs mongoose to connect to local mongoDB instance
 mongoose.connect('mongodb://localhost/myblog', { useMongoClient: true });
 //needed for async operations

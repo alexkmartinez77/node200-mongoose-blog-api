@@ -8,20 +8,23 @@ router.route('/')
         .then( users => res.status(200).json(users) );
   })
   .post((req, res) => {
-  })
+  });
 
 router.route('/:id')
   .get((req, res) => {
-    User.findById(req.body.id)
-        .then( user => {res.status(200).json(user); console.log(`User ${req.body.id} has been found.`)})
+    User.findById(req.params.id)
+        .then( user => {res.status(200).json(user); console.log(`User ${req.params.id} has been found.`)})
     })
   .post((req, res) => {
-    User.findByIdAndUpdate(req.body.id)
-        .then( user => {res.status(200).json(user); console.log(`User ${req.body.id} has been added.`)})
+
+    })
+  .put((req, res) => {
+    User.findByIdAndUpdate(req.params.id)
+        .then( user => {res.status(200).json(user); console.log(`User ${req.params.id} has been updated.`)})
     })
   .delete((req, res) => {
-    User.findByIdAndRemove(req.body.id)
-        .then( user => {res.status(200).json(user); console.log(`User ${req.body.id} has been removed.`)})
-    })
+    User.findByIdAndRemove(req.params.id)
+        .then( user => {res.status(200).json(user); console.log(`User ${req.params.id} has been removed.`)})
+    });
 
 module.exports = router;

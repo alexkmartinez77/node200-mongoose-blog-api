@@ -13,9 +13,7 @@ router.route('/')
   .post((req, res) => {
     User.findById(req.body.author)
         .then(user => {
-            console.log('user', user);
             const newBlog = new Blog(req.body);
-            newBlog.author = user._id;
             newBlog.save()
                    .then(blog => {
                      user.blogs.push(blog);

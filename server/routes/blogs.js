@@ -9,8 +9,11 @@ router.route('/')
         .then( blog => res.status(200).send(blog) );
     })
   .post((req, res) => {
-
-    });
+    newBlog = new Blog(req.body);
+    newBlog.save()
+           .then(savedBlog => res.status(201).json(savedBlog))
+           .catch(err => { res.status(500).json({error:err}); console.log(err)});
+});
 
 router.route('/:id')
   .get((req, res) => {

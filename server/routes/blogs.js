@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const Blog = require('../models/Blog');
 const User = require('../models/User');
@@ -30,8 +31,18 @@ router.route('/:id')
         .catch( error => { res.status(500).json({ 'error': error }); console.log(error)});
     })
   .put((req, res) => {
-    Blog.findByIdAndUpdate(req.params.id)
-        .then( blog => {res.status(200).json(blog); console.log(`User ${req.params.id} has been updated.`)})
+    console.log('req.body', req.body);
+    console.log('req.params.id', req.params.id);
+
+    Blog.findById(req.params.id)
+        .then(blog => console.log('Blog before', blog));
+
+    Blog.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        .then( blog => {
+          blog.article = "New article description"
+          blog.save()
+              .then(blog => {console.log('blog after', blog); res.status(204).send(blog)});
+        })
         .catch( error => { res.status(500).json({ 'error': error }); console.log(error)});
     })
   .delete((req, res) => {

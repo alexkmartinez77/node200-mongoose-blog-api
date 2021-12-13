@@ -17,7 +17,7 @@ const fakeUser = {
 };
 
 const fakeBlogs = [{
-    title: 'Helo World',
+    title: 'Helo World 3',
     article: `Brian Kernighan wrote the first "hello, world" program as part of the
         documentation for the BCPL programming language developed by Martin Richards. 
         BCPL was used while C was being developed at Bell Labs a few years before the 

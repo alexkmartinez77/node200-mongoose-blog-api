@@ -31,18 +31,8 @@ router.route('/:id')
         .catch( error => { res.status(500).json({ 'error': error }); console.log(error)});
     })
   .put((req, res) => {
-    console.log('req.body', req.body);
-    console.log('req.params.id', req.params.id);
-
-    Blog.findById(req.params.id)
-        .then(blog => console.log('Blog before', blog));
-
-    Blog.findByIdAndUpdate(req.params.id, req.body, {new: true})
-        .then( blog => {
-          blog.article = "New article description"
-          blog.save()
-              .then(blog => {console.log('blog after', blog); res.status(204).send(blog)});
-        })
+    Blog.findByIdAndUpdate(req.params.id, { $set: req.body }, {new: true})
+        .then( blog => { console.log('new blog', blog), res.status(204).send(blog)})
         .catch( error => { res.status(500).json({ 'error': error }); console.log(error)});
     })
   .delete((req, res) => {

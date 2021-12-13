@@ -24,6 +24,12 @@ router.route('/')
         .catch( error => { res.status(500).json({ 'error': error }); console.log(error)});
       });
 
+/*router.get('/featured', (req,res) => {
+  console.log('*****************************INSIDE FEATURED**********************************')
+  Blog.find({title: "Hello Word"})
+      .then(featuredBlogs => {res.status(200).json(featuredBlogs)});
+  });*/
+
 router.route('/:id')
   .get((req, res) => {
     Blog.findById(req.params.id)
@@ -32,19 +38,15 @@ router.route('/:id')
     })
   .put((req, res) => {
     Blog.findByIdAndUpdate(req.params.id, { $set: req.body }, {new: true})
-        .then( blog => { console.log('new blog', blog), res.status(204).send(blog)})
+        .then( blog => { res.status(201).json(blog), console.log(`Blog ${req.params.id} has been updated.`) })
         .catch( error => { res.status(500).json({ 'error': error }); console.log(error)});
     })
   .delete((req, res) => {
     Blog.findByIdAndRemove(req.params.id)
-        .then( blog => {res.status(200).json(blog); console.log(`User ${req.params.id} has been deleted.`)})
+        .then( blog => {res.status(200).json(blog); console.log(`Blog ${req.params.id} has been deleted.`)})
         .catch( error => { res.status(500).json({ 'error': error }); console.log(error)});
     });
 
-/*router.get('/featured', (req,res) => {
-  console.log('*****************************INSIDE FEATURED**********************************')
-  Blog.find({title: "Hello Word"})
-      .then(featuredBlogs => {res.status(200).json(featuredBlogs)});
-  });*/
+
 
 module.exports = router;

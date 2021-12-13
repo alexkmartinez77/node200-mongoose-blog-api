@@ -24,11 +24,10 @@ router.route('/')
         .catch( error => { res.status(500).json({ 'error': error }); console.log(error)});
       });
 
-/*router.get('/featured', (req,res) => {
-  console.log('*****************************INSIDE FEATURED**********************************')
-  Blog.find({title: "Hello Word"})
+router.get('/featured', (req,res) => {
+  Blog.find({featured: true})
       .then(featuredBlogs => {res.status(200).json(featuredBlogs)});
-  });*/
+  });
 
 router.route('/:id')
   .get((req, res) => {
@@ -38,7 +37,7 @@ router.route('/:id')
     })
   .put((req, res) => {
     Blog.findByIdAndUpdate(req.params.id, { $set: req.body }, {new: true})
-        .then( blog => { res.status(201).json(blog), console.log(`Blog ${req.params.id} has been updated.`) })
+        .then( blog => { res.status(204).json(blog), console.log(`Blog ${req.params.id} has been updated.`) })
         .catch( error => { res.status(500).json({ 'error': error }); console.log(error)});
     })
   .delete((req, res) => {

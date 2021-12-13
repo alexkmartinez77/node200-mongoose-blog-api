@@ -15,7 +15,7 @@ describe('Blog Model', () => {
             title: 'string',
             article: 'string',
             published: Date,
-            featured: 'boolean'
+            featured: Boolean
         };
 
         createModelExpectations(expect, b, expectedModel);

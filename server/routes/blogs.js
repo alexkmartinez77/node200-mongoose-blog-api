@@ -46,6 +46,4 @@ router.route('/:id')
         .catch( error => { res.status(500).json({ 'error': error }); console.log(error)});
     });
 
-
-
 module.exports = router;

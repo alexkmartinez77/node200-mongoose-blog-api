@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use('/api/users', users);
 app.use('/api/blogs', blogs);
 
-//Instructs mongoose to connect to local mongodb instance
+//Instructs mongoose to connect to local mongoDB instance
 //mongoose.connect('mongodb://localhost/myblog');
 
 //Instructs mongoose to connect to MongoDb Atlas

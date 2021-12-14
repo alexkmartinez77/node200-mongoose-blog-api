@@ -23,7 +23,7 @@ mongoose.Promise = Promise;
 
 //routes
 app.get('/', (req, res) => {
-  res.status(200).send();
+  res.status(200).send('Server is running. Use postman to access Blog API.');
 });
 
 module.exports = app;

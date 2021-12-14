@@ -27,7 +27,7 @@ jobs:
       # run tests! ppp
       - run: yarn test
 
-        deploy:
+  deploy:
     docker:
       - image: circleci/node:10.16.0
     steps:

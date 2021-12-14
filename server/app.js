@@ -15,7 +15,7 @@ app.use('/api/blogs', blogs);
 //mongoose.connect('mongodb://localhost/myblog');
 
 //Instructs mongoose to connect to MongoDb Atlas
-mongoose.connect(process.env.mongoDBAtlas);
+mongoose.connect(`mongodb+srv://alexkmartinez77:${process.env.mongoDBAtlas}@sdcsblogapi.j9ckx.mongodb.net/scsblogapi?retryWrites=true`);
 
 //needed for async operations
 mongoose.Promise = Promise;
